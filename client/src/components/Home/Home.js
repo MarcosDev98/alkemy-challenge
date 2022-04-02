@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Table } from '../';
+// import { Table } from '../';
 
 const Home = () => {
 
@@ -15,7 +15,7 @@ const Home = () => {
   
   return (
     <>
-      <Table />
+      {/* <Table /> */}
     </>
   );
 };
