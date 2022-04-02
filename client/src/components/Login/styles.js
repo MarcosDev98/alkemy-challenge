@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 import { Input } from '../';
 
+import { COLORS } from '../../utils/cssVariables';
+
+const { button_bg, button_hover, button } = COLORS;
+
 export const Forms = styled.div`
 
 `;
@@ -8,6 +12,12 @@ export const Forms = styled.div`
 export const Form = styled.div`
   padding: 30px;
 `;
+
+
+export const FormContainer = styled.div`
+  padding: 30px;
+`;
+
 
 export const Title = styled.span`
   font-size: 27px;
@@ -63,4 +73,50 @@ export const RightIcon = styled.i`
   transition: all 0.2s ease;
   cursor: pointer;
   padding: 10px;
+`;
+
+export const Button = styled.button`
+
+background-color: ${button_bg};
+  border-radius: 4px;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: ${button};
+  font-weight: 700;
+  padding: 1em 2em;
+  transition: all 0.5s ease;
+
+  :hover {
+    background-color: ${button_hover};
+  }
+
+`;
+
+export const BlockButton = styled(Button)`
+
+  margin: 30px 0 30px 0;
+  border-radius: 6px;
+  font-size: 17px; 
+  letter-spacing: 1px;
+  width: 100%;
+  transition: all 0.3s ease;
+
+`;
+
+export const A = styled.a`
+  cursor: pointer;
+  text-decoration: none;
+  color: #09f;
+  margin-left: 5px;
+
+  :hover {
+    text-decoration: underline;
+  }
+`;
+
+export const Span = styled.span``;
+
+export const LoginSignup = styled.div`
+  text-align: center;
 `;
