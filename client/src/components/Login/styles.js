@@ -3,11 +3,31 @@ import { Input } from '../';
 
 import { COLORS } from '../../utils/cssVariables';
 
-const { button_bg, button_hover, button } = COLORS;
+const { button_bg, button_hover, button, login_bg } = COLORS;
 
-export const Forms = styled.div`
 
+export const Body = styled.div`
+  align-items: center;
+  background-color: ${login_bg};
+  display: flex;
+  height: 100vh;
+  justify-content: center;
 `;
+
+export const Container = styled.div`
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 80%;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  max-width: 430px;
+  position: relative;
+  width: 100%;
+`;
+
+
+export const Forms = styled.div``;
 
 export const Form = styled.div`
   padding: 30px;
@@ -56,6 +76,9 @@ export const StyledInput = styled(Input)`
   position: absolute;
   width: 100%;
   transition: all 0.2s ease;
+  font-size: 14px;
+  font-weight: 400;
+
 
   :focus {
     border-bottom: 3px solid #09f;
@@ -120,3 +143,4 @@ export const Span = styled.span``;
 export const LoginSignup = styled.div`
   text-align: center;
 `;
+
