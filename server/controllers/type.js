@@ -1,5 +1,5 @@
 const typesRouter = require('express').Router();
-const mysqlConnection = require('../db');
+const mysqlConnection = require('../connection');
 const { is_deleted, is_not_deleted } = require('../utils/globals.js');
 
 
