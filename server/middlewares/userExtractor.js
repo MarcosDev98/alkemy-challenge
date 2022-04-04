@@ -23,4 +23,4 @@ module.exports = (request, response, next) => {
   request.user_id = user_id;
 
   next();
-}
+};

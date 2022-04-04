@@ -3,9 +3,9 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 // CONTROLLERS
 const userRouter = require('./controllers/user');
-const transactionRouter = require('./controllers/transactions');
-const typesRouter = require('./controllers/types');
-const categoriesRouter = require('./controllers/categories');
+const transactionRouter = require('./controllers/transaction');
+const typesRouter = require('./controllers/type');
+const categoriesRouter = require('./controllers/category');
 const loginRouter = require('./controllers/login');
 
 const PORT = 5005;
