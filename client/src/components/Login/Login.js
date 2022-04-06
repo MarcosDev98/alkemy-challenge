@@ -8,73 +8,63 @@ import { A, Body, Container, LoginSignup, BlockButton, Form, Forms, FormContaine
 
 const Login = () => {
 
+  
   const navigate = useNavigate();
-  const [user, setUser] = useState();
-  const [loginForm, loginHandler] = useForm({
+  const [user, setUser] = useState(null);
+  const [loginForm, loginHandler, resetLogin] = useForm({
     username: '',
     password: '',
   });
 
-  const [signUpForm, signUpHandler] = useForm({
+  // eslint-disable-next-line no-unused-vars
+  const [signUpForm, signUpHandler, resetSignUp] = useForm({
     firstname: '',
     lastname: '',
     email: '',
     username: '',
     password: '',
-  });
-
-
-  const handleLogin = (e) => {
+  })
+;
+  const handleLogin = async (e) => {
     e.preventDefault();
 
-    console.log('entra?');
     loginUser(loginForm)
       .then((data) => {
         setUser(data);
-      }).catch((error) => console.error('login_error', error));
-
+      })
+      .catch((error) => console.error('login_error', error));
+    
+    resetLogin();
+    
   };
 
+  
+  // eslint-disable-next-line no-unused-vars
   const handleSignUp = (e) => {
-
     e.preventDefault();
+
     createUser(signUpForm)
       .then((data) => {
+        
         if (data.status === 'OK') {
           showLoginForm();
         }
+        
+
       })
       .catch((error) => console.error('signup_error', error));
 
+    resetSignUp();
+
   };
+
 
   if (user) {
     window.sessionStorage.setItem('loggedUser', JSON.stringify(user));
     navigate('/');
+
   }
 
-
-  const showRegistrationForm = (e) => {
-    e.preventDefault();
-
-    const loginForm = document.getElementById('login-form');
-    loginForm.style.display = 'none';
-
-    const registrationForm = document.getElementById('registration-form');
-    registrationForm.style.display = 'block';
-
-  };
-
-  const showLoginForm = (e) => {
-    e.preventDefault();
-
-    const registrationForm = document.getElementById('registration-form');
-    registrationForm.style.display = 'none';
-
-    const loginForm = document.getElementById('login-form');
-    loginForm.style.display = 'block';
-
-  };
 
 
   const showHidePassword = (e) => {
@@ -90,12 +80,18 @@ const Login = () => {
 
 
       e.target.parentElement.childNodes[0].children[1].type = 'text';
+      
+
       // CAMBIAR ICONO
+      
       if (names.length > 4) {
         names = names.slice(0,4);
       }
+
       names[3] = eye;
       e.target.className = names.toString().replaceAll(',', ' ');
+
+
     } else {
 
       // OCULTAR PASSWORD
@@ -118,11 +114,33 @@ const Login = () => {
     e.target.parentElement.childNodes[0].children[1].focus();
 
   };
+  
+
+  const showRegistrationForm = (e) => {
+    e.preventDefault();
+
+    const loginForm = document.getElementById('login-form');
+    loginForm.style.display = 'none';
+
+    const  registrationForm = document.getElementById('registration-form');
+    registrationForm.style.display = 'block';
+
+  };
+
+  const showLoginForm = () => {
+
+    const loginForm = document.getElementById('login-form');
+    loginForm.style.display = 'block';
+
+    const  registrationForm = document.getElementById('registration-form');
+    registrationForm.style.display = 'none';
+
+  };
 
 
   return (
     <Body>
-      <Container>
+      <Container id='container' >
         <Forms>
           <FormContainer>
             <div id='login-form'>
@@ -132,8 +150,8 @@ const Login = () => {
                   <StyledInput label='Usuario' name='username' value={loginForm.username} onChange={loginHandler} />
                 </InputField>
                 <InputField>
-                  <StyledInput label='Contraseña' type='password' name='password' value={loginForm.password} onChange={loginHandler} />
-                  <RightIcon onClick={showHidePassword} className="uil uil-eye-slash" />
+                  <StyledInput id='pwField1' label='Contraseña' type='password' name='password' value={loginForm.password} onChange={loginHandler} className='password' />
+                  <RightIcon onClick={showHidePassword} name='showHidePw' className="uil uil-eye-slash"></RightIcon>
                 </InputField>
                 <BlockButton>Ingresar</BlockButton>
                 <LoginSignup>
@@ -142,7 +160,8 @@ const Login = () => {
                 </LoginSignup>
               </Form>
             </div>
-            <div id='registration-form' style={{display: 'none'}} >
+
+            <div id='registration-form' style={{display: 'none'}}>
               <Form onSubmit={handleSignUp}>
                 <Title>Registro</Title>
                 <InputField>
@@ -158,8 +177,8 @@ const Login = () => {
                   <StyledInput label='Usuario' name='username' value={signUpForm.username} onChange={signUpHandler} />
                 </InputField>
                 <InputField>
-                  <StyledInput label='Contraseña' name='password' value={signUpForm.password} onChange={signUpHandler} />
-                  <RightIcon onClick={showHidePassword} name='showHidePw' className="uil uil-eye-slash " />
+                  <StyledInput id='pwField2' label='Contraseña' name='password' value={signUpForm.password} onChange={signUpHandler} type='password' className='password' />
+                  <RightIcon onClick={showHidePassword} name='showHidePw' className="uil uil-eye-slash "></RightIcon>
                 </InputField>
                 <BlockButton>Registrar</BlockButton>
               </Form>
@@ -168,7 +187,6 @@ const Login = () => {
         </Forms>
       </Container>
     </Body>
-    
   );
 };
 

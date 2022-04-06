@@ -5,10 +5,8 @@ const { table_incomes, table_expenses } = COLORS;
 
 
 export const TableContainer = styled.div`
-  
   color: #0B1827;
-  margin: 0 auto;
-  
+  margin: 15px auto;
 `;
 
 
@@ -16,7 +14,6 @@ export const TableContainer = styled.div`
 export const StyledTable = styled.table`
   border-collapse: collapse;
   width: 100%;
-
 `;
 
 export const TableHead = styled.thead``;

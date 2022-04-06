@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+// eslint-disable-next-line no-unused-vars
 import { ReadOnlyRow, EditableRow, FormTransaction } from '../';
 import { ConceptTH, TableContainer, StyledTable, TableBody, TableHead, TR, TH } from './styles';
 
@@ -19,7 +20,10 @@ const Table = () => {
   });
 
 
+
   useEffect(() => {
+
+
     const loggedUser = JSON.parse(window.sessionStorage.getItem('loggedUser'));
     if (loggedUser !== null) {
 
@@ -127,10 +131,22 @@ const Table = () => {
 
   };
 
+  // const actualBalance = () => {
+
+  //   transactions.reduce((total, x) => {
+  //     return x.id_type_transaction === 1 ? total += x.amount : total -= x.amount;
+  //   }, 0);
+  // };
 
   return(
     <>
       <TableContainer>
+        <h1>Balance actual: {
+          transactions.reduce((total, x) => 
+          {
+            return x.id_type_transaction === 1 ? total += x.amount : total -= x.amount;
+          }, 0)}
+        </h1>
         <form onSubmit={handleEditFormSubmit}>
           <StyledTable>
 
