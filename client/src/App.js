@@ -1,32 +1,31 @@
-import React, { useState, useEffect } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import React from 'react';
+import { Routes, Route, BrowserRouter, Link, Navigate } from 'react-router-dom';
 import { Home, Login, Navbar } from './components';
+import useUser from './hooks/useUser';
 
 const App = () => {
 
-  const [user, setUser] = useState(null);
+  const { user } = useUser();
+  
 
-  const loggedUser = JSON.parse(window.sessionStorage.getItem('loggedUser'));
-
-  useEffect(() => {
-
-    if (loggedUser !== null) {
-
-      setUser(loggedUser);
-    }
-
-  },[]);
 
   return (
-    <>
-      <Navbar />
+    <BrowserRouter>
+      <header>
+        <Navbar>
+          <Link to='/' />
+          <Link to='login' />
+        </Navbar>
+      </header>
       <Routes>
-        <Route path='/login' element={<Login />} />
+        <Route path='/login' element={() => {
+          return user ? <Navigate to='/'/> : <Login />;}
+        } />
         <Route path='/' element={() => {
-          user ? <Home /> : <Login />;}
+          return user ? <Home /> : <Navigate to='/login'/>;}
         } />
       </Routes>
-    </>
+    </BrowserRouter>
   );
 
 };
