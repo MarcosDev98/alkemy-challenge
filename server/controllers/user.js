@@ -3,30 +3,19 @@ const mysqlConnection = require('../connection');
 const { is_deleted, is_not_deleted } = require('../utils/globals.js');
 const encryptPassword = require('../utils/hashPassword');
 const express = require('express');
+const verifyUsername = require('../middlewares/verifyUsername');
 
 userRouter.use(express.json());
 
-userRouter.post('/create', async (req, res) => {
+userRouter.post('/create', verifyUsername, async (req, res) => {
 
   const { username, password, email, firstname, lastname } = req.body;
 
+  const { isUsed } = req;
 
-  const hashedPassword = encryptPassword(password);
+  const hashedPassword = await encryptPassword(password);
 
-  let isUsed = false;
-
-  await mysqlConnection.query(`SELECT * FROM user WHERE username='${username}';`, (err,results) => {
-    if (err) {
-      const error = { code: err.code, message: err.message };
-      throw error;
-    }
-    if (results.affectedRows > 0) {
-      isUsed = true;
-    }
-
-  });
-
-  if (!isUsed) {
+  if (isUsed === false) {
     await mysqlConnection.query(`INSERT INTO user (username, password, email, firstname, lastname, is_deleted) VALUES('${username}', '${hashedPassword}', '${email}', '${firstname}', '${lastname}', '${is_not_deleted}');`, (err) => {
       if (err) {
         const error = { code: err.code, message: err.message };
