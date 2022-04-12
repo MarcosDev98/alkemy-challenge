@@ -13,7 +13,6 @@ loginRouter.post('/', async (req, res) => {
   
   const { username, password } = req.body;
   
-  
   // eslint-disable-next-line quotes
   const user = await mysqlConnection.query(`
     SELECT 
