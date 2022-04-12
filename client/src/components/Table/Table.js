@@ -4,12 +4,13 @@ import { ReadOnlyRow, EditableRow, FormTransaction } from '../';
 import { ConceptTH, TableContainer, StyledTable, TableBody, TableHead, TR, TH } from './styles';
 import { numberFormatter } from '../../utils/numberFormat';
 import { updateTransaction, deleteTransaction, getTransactions } from '../../services/transaction';
+import useUser from '../../hooks/useUser';
 
 
 const Table = () => {
 
   const [transactions, setTransactions] = useState([]);
-  const [user, setUser] = useState(null);
+  const { user } = useUser();
   const [editRow, setEditRow] = useState(null);
   const [editFormData, setEditFormData] = useState({
     id: '',
@@ -19,19 +20,7 @@ const Table = () => {
     category_id: ''
   });
 
-
-
-  useEffect(() => {
-
-
-    const loggedUser = JSON.parse(window.sessionStorage.getItem('loggedUser'));
-    if (loggedUser !== null) {
-
-      setUser(loggedUser);
-    }
-
-  },[]);
-
+  console.log('user: ', user);
 
   useEffect(() => {
     if (user) {

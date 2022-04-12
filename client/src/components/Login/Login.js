@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import useForm from '../../hooks/useForm.js';
 import { createUser, loginUser } from '../../services/user.js';
@@ -8,9 +8,7 @@ import { A, Body, Container, LoginSignup, BlockButton, Form, Forms, FormContaine
 
 const Login = () => {
 
-  
   const navigate = useNavigate();
-  const [user, setUser] = useState(null);
   const [loginForm, loginHandler, resetLogin] = useForm({
     username: '',
     password: '',
@@ -30,7 +28,8 @@ const Login = () => {
 
     loginUser(loginForm)
       .then((data) => {
-        setUser(data);
+        window.localStorage.setItem('loggedUser', JSON.stringify(data));
+        navigate('/');
       })
       .catch((error) => console.error('login_error', error));
     
@@ -39,10 +38,9 @@ const Login = () => {
   };
 
   
-  // eslint-disable-next-line no-unused-vars
   const handleSignUp = (e) => {
     e.preventDefault();
-
+    console.log('handle_signup:', signUpForm);
     createUser(signUpForm)
       .then((data) => {
         
@@ -54,17 +52,9 @@ const Login = () => {
       })
       .catch((error) => console.error('signup_error', error));
 
-    resetSignUp();
+    // resetSignUp();
 
   };
-
-
-  if (user) {
-    window.sessionStorage.setItem('loggedUser', JSON.stringify(user));
-    navigate('/');
-
-  }
-
 
 
   const showHidePassword = (e) => {
@@ -136,6 +126,7 @@ const Login = () => {
     registrationForm.style.display = 'none';
 
   };
+
 
 
   return (
