@@ -38,10 +38,8 @@ function createUser (new_user) {
       }
     };
     
-    
     http.open('POST', 'http://localhost:5005/api/users/create', true);
     http.setRequestHeader('Content-type', 'application/json');
-    
     http.send(JSON.stringify(new_user));
 
   });
