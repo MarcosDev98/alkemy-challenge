@@ -5,7 +5,7 @@ const useUser = () => {
 
   useEffect(() => {
 
-    const loggedUser = JSON.parse(window.sessionStorage.getItem('loggedUser'));
+    const loggedUser = JSON.parse(window.localStorage.getItem('loggedUser'));
 
     if (loggedUser) {
       setUser(user);
@@ -13,6 +13,7 @@ const useUser = () => {
 
   }, []);
 
+  console.log('useUser: ', user);
   return { user };
 
 };
