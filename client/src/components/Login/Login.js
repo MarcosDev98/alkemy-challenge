@@ -3,11 +3,13 @@ import { useNavigate } from 'react-router-dom';
 import useForm from '../../hooks/useForm.js';
 import { createUser, loginUser } from '../../services/user.js';
 import { A, Body, Container, LoginSignup, BlockButton, Form, Forms, FormContainer, InputField, Title, StyledInput, RightIcon, Span } from './styles.js';
+import { useAuth } from '../../hooks/useAuth.js';
 
 
 
 const Login = () => {
 
+  const { login } = useAuth();
   const navigate = useNavigate();
   const [loginForm, loginHandler, resetLogin] = useForm({
     username: '',
@@ -28,7 +30,9 @@ const Login = () => {
 
     loginUser(loginForm)
       .then((data) => {
+        //necesuto el localStorage??
         window.localStorage.setItem('loggedUser', JSON.stringify(data));
+        login();
         navigate('/');
       })
       .catch((error) => console.error('login_error', error));
