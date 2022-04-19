@@ -23,17 +23,18 @@ const Login = () => {
     email: '',
     username: '',
     password: '',
-  })
-;
+  });
+
+
   const handleLogin = async (e) => {
     e.preventDefault();
 
     loginUser(loginForm)
       .then((data) => {
-        //necesuto el localStorage??
-        window.localStorage.setItem('loggedUser', JSON.stringify(data));
-        login();
+        
+        login(data);
         navigate('/');
+        
       })
       .catch((error) => console.error('login_error', error));
     

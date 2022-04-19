@@ -4,13 +4,11 @@ import { ReadOnlyRow, EditableRow, FormTransaction } from '../';
 import { ConceptTH, TableContainer, StyledTable, TableBody, TableHead, TR, TH } from './styles';
 import { numberFormatter } from '../../utils/numberFormat';
 import { updateTransaction, deleteTransaction, getTransactions } from '../../services/transaction';
-import useUser from '../../hooks/useUser';
-
+import { useAuth } from '../../hooks/useAuth';
 
 const Table = () => {
 
   const [transactions, setTransactions] = useState([]);
-  const { user } = useUser();
   const [editRow, setEditRow] = useState(null);
   const [editFormData, setEditFormData] = useState({
     id: '',
@@ -19,8 +17,7 @@ const Table = () => {
     date: '',
     category_id: ''
   });
-
-  console.log('user: ', user);
+  const { user } = useAuth();
 
   useEffect(() => {
     if (user) {
