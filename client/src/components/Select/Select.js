@@ -9,7 +9,8 @@ const Select = ({ label, types, ...props }) => {
       <StyledSelect {...props}>
         {
           types.map(x => 
-            <option key={x.id} value={x.id} >{x.type}</option>)}
+            <option key={x.id} value={x.id} >{x.type}</option>)
+        }
       </StyledSelect>
     </Field>
   );
