@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 // eslint-disable-next-line no-unused-vars
 import { ReadOnlyRow, EditableRow, FormTransaction } from '../';
 import { ConceptTH, TableContainer, StyledTable, TableBody, TableHead, TR, TH } from './styles';
-import { numberFormatter } from '../../utils/numberFormat';
 import { updateTransaction, deleteTransaction, getTransactions } from '../../services/transaction';
 import { useAuth } from '../../hooks/useAuth';
 
@@ -124,7 +123,7 @@ const Table = () => {
         <h1>Balance actual: {
           transactions.reduce((total, x) => 
           {
-            return numberFormatter(x.id_type_transaction === 1 ? total += x.amount : total -= x.amount);
+            return (x.id_type_transaction === 1 ? total += x.amount : total -= x.amount);
           }, 0)}
         </h1>
         <form onSubmit={handleEditFormSubmit}>
