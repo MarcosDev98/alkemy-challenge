@@ -40,7 +40,7 @@ const EditableRow = ({ transaction, editFormData, handleEditFormChange, handleCa
           value={editFormData.date}
         />
       </TD>
-      <TD>
+      {/* <TD>
         <input 
           type='text' 
           required 
@@ -49,9 +49,11 @@ const EditableRow = ({ transaction, editFormData, handleEditFormChange, handleCa
           onChange={handleEditFormChange}
           value={editFormData.category_id}
         />
-      </TD>
-      <button type='submit' >Save</button>
-      <button type='button' onClick={handleCancelClick} >Cancel</button>
+      </TD> */}
+      <>
+        <button type='submit' >Save</button>
+        <button type='button' onClick={handleCancelClick} >Cancel</button>
+      </>
     </TR>
   );
 };
