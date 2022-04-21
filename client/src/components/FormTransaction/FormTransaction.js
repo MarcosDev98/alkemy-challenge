@@ -7,12 +7,13 @@ import { createTransaction } from '../../services/transaction';
 import { getTypes } from '../../services/types';
 
 import useForm from '../../hooks/useForm';
+import { useAuth } from '../../hooks/useAuth';
 
 
 const FormTransaction = ({ getTransactions }) => {
 
   // const [transactions, setTransaction] = useState([]);
-  const [user, setUser] = useState(null);
+  const { user } = useAuth();
   const [types, setTypes] = useState([]);
   const [notification, setNotification] = useState(false);
   const [form, handleChange, reset] = useForm({
@@ -27,6 +28,10 @@ const FormTransaction = ({ getTransactions }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if (!form.id_type_transaction){
+      form.id_type_transaction = 1;
+    }
+    
     createTransaction(form, user.token)
       .then(() => {
         getTransactions();
@@ -66,11 +71,9 @@ const FormTransaction = ({ getTransactions }) => {
   };
 
   useEffect(() => {
+    
     getTypesTransaction();
-    const loggedUser = JSON.parse(window.sessionStorage.getItem('loggedUser'));
-    if (loggedUser !== null) {
-      setUser(loggedUser);
-    }
+    
   }, []);
 
 
