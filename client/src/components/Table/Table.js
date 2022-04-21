@@ -134,7 +134,7 @@ const Table = () => {
                 <ConceptTH >Concepto</ConceptTH>
                 <TH >Monto</TH>
                 <TH >Fecha</TH>
-                <TH >Categoria</TH>
+                {/* <TH >Categoria</TH> */}
                 <TH >Acciones</TH>
               </TR>
             </TableHead>

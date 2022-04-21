@@ -3,6 +3,7 @@ import React from 'react';
 // eslint-disable-next-line no-unused-vars
 import { TR, TD } from '../Table/styles';
 
+// eslint-disable-next-line no-unused-vars
 import { EditIcon, DeleteIcon, IconsTD, CategoryTD, ConceptTD, AmountTD, DateTD } from './styles';
 
 
@@ -16,7 +17,7 @@ const ReadOnlyRow = ({ transaction, handleEdit, handleDelete }) => {
       <ConceptTD>{transaction.concept}</ConceptTD>
       <AmountTD>{transaction.amount}</AmountTD>
       <DateTD>{transaction.date}</DateTD>
-      <CategoryTD>{transaction.category_id}</CategoryTD>
+      {/* <CategoryTD>{transaction.category_id}</CategoryTD> */}
       <IconsTD>
         <EditIcon 
           className="uil uil-edit" 
