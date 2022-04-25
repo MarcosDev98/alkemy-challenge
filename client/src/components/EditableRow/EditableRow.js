@@ -1,6 +1,8 @@
 import React from 'react';
 
-import { TR, TD } from '../Table/styles';
+import { TR } from '../Table/styles';
+
+import { ButtonsContainer, TD, Button, Input } from './styles';
 
 const EditableRow = ({ transaction, editFormData, handleEditFormChange, handleCancelClick }) => {
 
@@ -10,8 +12,10 @@ const EditableRow = ({ transaction, editFormData, handleEditFormChange, handleCa
       key={transaction.id} 
       bg={transaction.id_type_transaction === 1 ? 'green' : 'red' }
     >
-      <TD>
-        <input 
+      <TD
+        name={'Concepto'}
+      >
+        <Input 
           type='text' 
           required 
           placeholder='Ingrese el concepto...' 
@@ -20,8 +24,10 @@ const EditableRow = ({ transaction, editFormData, handleEditFormChange, handleCa
           value={editFormData.concept}
         />
       </TD>
-      <TD>
-        <input 
+      <TD
+        name={'Monto'}
+      >
+        <Input 
           type='text' 
           required 
           placeholder='Ingrese el Monto...' 
@@ -30,8 +36,10 @@ const EditableRow = ({ transaction, editFormData, handleEditFormChange, handleCa
           value={editFormData.amount}
         />
       </TD>
-      <TD>
-        <input 
+      <TD
+        name={'Fecha'}
+      >
+        <Input 
           type='text' 
           required 
           placeholder='Ingrese la fecha...' 
@@ -40,20 +48,13 @@ const EditableRow = ({ transaction, editFormData, handleEditFormChange, handleCa
           value={editFormData.date}
         />
       </TD>
-      {/* <TD>
-        <input 
-          type='text' 
-          required 
-          placeholder='Ingrese la categoria...' 
-          name='category_id'
-          onChange={handleEditFormChange}
-          value={editFormData.category_id}
-        />
-      </TD> */}
-      <>
-        <button type='submit' >Save</button>
-        <button type='button' onClick={handleCancelClick} >Cancel</button>
-      </>
+      <ButtonsContainer
+        name={'Acciones'}
+      >
+        <Button type='submit' >Save</Button>
+        <Button type='button' onClick={handleCancelClick} >Cancel</Button>
+      </ButtonsContainer>
+      
     </TR>
   );
 };

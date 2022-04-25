@@ -119,13 +119,8 @@ const Table = () => {
 
   return(
     <>
+      <h1>Balance actual: { transactions.reduce((total, x) => x.id_type_transaction === 1 ? total += x.amount : total -= x.amount, 0) } </h1>
       <TableContainer>
-        <h1>Balance actual: {
-          transactions.reduce((total, x) => 
-          {
-            return (x.id_type_transaction === 1 ? total += x.amount : total -= x.amount);
-          }, 0)}
-        </h1>
         <form onSubmit={handleEditFormSubmit}>
           <StyledTable>
 
