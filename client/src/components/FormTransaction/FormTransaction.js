@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Input, Select, Button, Notification } from '../'; 
-import { FormContainer } from './styles';
-
+import './style.css';
 // HACER QUE SE PUEDA IMPORTAR DESDE 1 SOLO ARCHIVO!!
 import { createTransaction } from '../../services/transaction';
 import { getTypes } from '../../services/types';
@@ -80,7 +79,7 @@ const FormTransaction = ({ getTransactions }) => {
   return (
     <>
       {notification ? <Notification mode={notification.mode} title={notification.title} message={notification.message} /> : null}
-      <FormContainer>
+      <div className='container'>
         <form onSubmit={handleSubmit}>
           <Input label='Concepto' name='concept' value={form.concept} onChange={handleChange} />
           <Input label='Monto' name='amount' value={form.amount} onChange={handleChange} />
@@ -88,7 +87,7 @@ const FormTransaction = ({ getTransactions }) => {
           <Select label='Tipo' name='id_type_transaction' value={form.id_type_transaction} types={types} onChange={handleChange} />
           <Button>Enviar</Button>
         </form>
-      </FormContainer>
+      </div>
     </>
   );
 };

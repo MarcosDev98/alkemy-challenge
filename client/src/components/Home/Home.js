@@ -1,14 +1,14 @@
 import React from 'react';
 import { Table } from '../';
-import { Container } from './styles';
+import './style.css';
 
 const Home = () => {
 
 
   return (
-    <Container>
+    <div className='container'>
       <Table />
-    </Container>
+    </div>
   );
 };
 

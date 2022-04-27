@@ -1,18 +1,16 @@
 import React from 'react';
-
-import { TR } from '../Table/styles';
-
-import { ButtonsContainer, TD, Button, Input } from './styles';
+import { Input, Button } from '../';
+import '../Table/style.css';
 
 const EditableRow = ({ transaction, editFormData, handleEditFormChange, handleCancelClick }) => {
 
 
   return (
-    <TR 
+    <tr 
       key={transaction.id} 
       bg={transaction.id_type_transaction === 1 ? 'green' : 'red' }
     >
-      <TD
+      <td
         name={'Concepto'}
       >
         <Input 
@@ -23,8 +21,8 @@ const EditableRow = ({ transaction, editFormData, handleEditFormChange, handleCa
           onChange={handleEditFormChange}
           value={editFormData.concept}
         />
-      </TD>
-      <TD
+      </td>
+      <td
         name={'Monto'}
       >
         <Input 
@@ -35,8 +33,8 @@ const EditableRow = ({ transaction, editFormData, handleEditFormChange, handleCa
           onChange={handleEditFormChange}
           value={editFormData.amount}
         />
-      </TD>
-      <TD
+      </td>
+      <td
         name={'Fecha'}
       >
         <Input 
@@ -47,15 +45,15 @@ const EditableRow = ({ transaction, editFormData, handleEditFormChange, handleCa
           onChange={handleEditFormChange}
           value={editFormData.date}
         />
-      </TD>
-      <ButtonsContainer
+      </td>
+      <td
         name={'Acciones'}
       >
         <Button type='submit' >Save</Button>
         <Button type='button' onClick={handleCancelClick} >Cancel</Button>
-      </ButtonsContainer>
+      </td>
       
-    </TR>
+    </tr>
   );
 };
 
