@@ -150,9 +150,11 @@ export const ConceptTD = styled.td`
 export const AmountTD = styled.td`
   width: 30%;
   padding: 6px 12px;
+  word-break: break-all;
 
   @media only screen and ${device.lg} {
-
+    word-wrap: break-word;
+    word-break: break-all;
     display: block;
     width: 50%;
     text-align: left;
