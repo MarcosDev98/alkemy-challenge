@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 // eslint-disable-next-line no-unused-vars
 import { ReadOnlyRow, EditableRow, FormTransaction } from '../';
-import { ConceptTH, TableContainer, StyledTable, TableBody, TableHead, TR, TH } from './styles';
+import { ConceptTH, TableContainer, StyledTable, TableBody, TableHead, TH } from './styles';
 import { updateTransaction, deleteTransaction, getTransactions } from '../../services/transaction';
 import { useAuth } from '../../hooks/useAuth';
 
@@ -125,13 +125,10 @@ const Table = () => {
           <StyledTable>
 
             <TableHead>
-              <TR>
-                <ConceptTH >Concepto</ConceptTH>
-                <TH >Monto</TH>
-                <TH >Fecha</TH>
-                {/* <TH >Categoria</TH> */}
-                <TH >Acciones</TH>
-              </TR>
+              <ConceptTH >Concepto</ConceptTH>
+              <TH >Monto</TH>
+              <TH >Fecha</TH>
+              <TH >Acciones</TH>
             </TableHead>
 
 
