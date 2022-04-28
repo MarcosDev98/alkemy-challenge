@@ -1,18 +1,21 @@
 :root {
   /* colors */
+  --body-bg: #eee;
   --main-blue: #0099FF;
   --button-hover: #2150d0;
-  --container-bg: #cecece;
+  --container-bg: #fff;
   --card-bg: #fff;
   --input-border: rgba(34, 34, 34, 0.15);
   --input-outline: rgba(0, 132, 255 , 0.733);
   --input-label: #222;
   --list-balance: #64b6f5;
+  --nav-bg: #aaa;
   --select-bg: #fff;
   --select-border: rgb(34, 34, 34, 0.15);
   --select-outline: rgba(0, 132, 255, 0.733);
   --table-expenses: #F58282;
   --table-incomes: #7CF062;
+  --table-header: #78C9FF;
   --login-a: #0099ff;
   --login-bg: #0099ff;
   --login-input-border: #0099ff;
@@ -37,5 +40,5 @@ body {
   box-sizing: border-box;
   font-family: 'Poppins', Lato, sans-serif;
   overflow-x: hidden;
-  background-color: #BBEEFF;
+  background-color: var(--body-bg);
 }
