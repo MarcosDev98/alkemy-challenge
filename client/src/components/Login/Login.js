@@ -3,7 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import useForm from '../../hooks/useForm.js';
 import { createUser, loginUser } from '../../services/user.js';
 import { useAuth } from '../../hooks/useAuth.js';
-import { Input } from '../';
+// eslint-disable-next-line no-unused-vars
+import { Input, Notification } from '../';
 
 import './style.css';
 
@@ -51,6 +52,8 @@ const Login = () => {
         
         if (data.status === 'OK') {
           showLoginForm();
+        } else {
+          <Notification mode='success' title='Ups' message='Error' />;
         }
         
 
@@ -159,7 +162,7 @@ const Login = () => {
 
             <div id='registration-form' style={{display: 'none'}}>
               <form onSubmit={handleSignUp}>
-                <span>Registro</span>
+                <span className='title'>Registro</span>
                 <div className='input-field'>
                   <Input label='Nombre' name='firstname' value={signUpForm.firstname} onChange={signUpHandler} className='input' />
                 </div>

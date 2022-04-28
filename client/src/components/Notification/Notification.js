@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 // eslint-disable-next-line no-unused-vars
-import { BodyComponent, Toast, ToastContent, CheckIcon, Message, Title, Text, CloseIcon} from './styles';
-
+import './style.css';
 
 // eslint-disable-next-line no-unused-vars
 const Notification = ({ mode, title, message, onClose }) => {
@@ -26,16 +25,16 @@ const Notification = ({ mode, title, message, onClose }) => {
   }, []);
 
   return(
-    <Toast id='toast' mode={mode}>
-      <ToastContent>
-        <CheckIcon mode={mode} className='uil uil-check' />
-        <Message>
-          <Title>{title}</Title>
-          <Text>{message}</Text>
-        </Message>
-      </ToastContent>
-      <CloseIcon onClick={hideNotification} className='uil uil-times' />
-    </Toast>
+    <div className='toast' id='toast' mode={mode}>
+      <div className='toast-content'>
+        <i mode={mode} className='uil uil-check check-icon' />
+        <div className='message'>
+          <div className='title'>{title}</div>
+          <div className='text'>{message}</div>
+        </div>
+      </div>
+      <i onClick={hideNotification} className='uil uil-times close-icon' />
+    </div>
   );
 };
 

@@ -79,7 +79,7 @@ const FormTransaction = ({ getTransactions }) => {
   return (
     <>
       {notification ? <Notification mode={notification.mode} title={notification.title} message={notification.message} /> : null}
-      <div className='container'>
+      <div className='form-new-transaction'>
         <form onSubmit={handleSubmit}>
           <Input label='Concepto' name='concept' value={form.concept} onChange={handleChange} />
           <Input label='Monto' name='amount' value={form.amount} onChange={handleChange} />

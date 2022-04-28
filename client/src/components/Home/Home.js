@@ -6,9 +6,9 @@ const Home = () => {
 
 
   return (
-    <div className='container'>
-      <Table />
-    </div>
+    <Table />
+    // <div className='home-container'>
+    // </div>
   );
 };
 

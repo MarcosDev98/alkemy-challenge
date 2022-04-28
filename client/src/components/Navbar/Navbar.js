@@ -9,9 +9,9 @@ const Navbar = () => {
 
   return (
     <nav>
-      <Link to='/'>Home</Link>
+      <Link className='link' to='/'>Home</Link>
       {!isAuthenticated ? <Link to='login'>Login</Link> : null}
-      <Link to='login' onClick={logout}>Logout</Link>
+      <Link className='link' to='login' onClick={logout}>Logout</Link>
     </nav>
   );
 

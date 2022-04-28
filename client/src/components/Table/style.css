@@ -9,9 +9,20 @@ body {
 
 }
 
+.balance {
+  text-align: center;
+  text-decoration: underline;
+  
+}
+
+form {
+  margin: 15px 15px;
+}
+
 .table {
   width: 100%;
   border-collapse: collapse;
+  margin-bottom: 100px;
 }
 
 .table td, .table th{
@@ -22,7 +33,7 @@ body {
 }
 
 .table th {
-  background-color: aliceblue;
+  background-color: var(--table-header);
 
 }
 
@@ -35,6 +46,20 @@ body {
 .trash:hover {
   color: red;
   cursor: pointer;
+}
+
+.green {
+  background-color: var(--table-incomes);
+}
+
+.red {
+  background-color: var(--table-expenses);
+}
+
+
+td button {
+  margin: 5px 10px 5px 10px;
+  padding: 5px 10px 5px 10px;
 }
 
 /* Responsive */

@@ -5,7 +5,7 @@ const ReadOnlyRow = ({ transaction, handleEdit, handleDelete }) => {
   return (
     <tr 
       key={transaction.id} 
-      bg={transaction.id_type_transaction === 1 ? 'green' : 'red' }
+      className={`${transaction.id_type_transaction === 1 ? 'green' : 'red'}`}
     >
       <td name='Concepto'>{transaction.concept}</td>
       <td name='Monto'>{transaction.amount}</td>

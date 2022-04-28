@@ -1,4 +1,16 @@
 
-.container {
-  padding: 20px;
+.form-new-transaction {
+  margin-left: auto;
+  margin-right: auto;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+  width: 50%;
+  margin-bottom: 200px;
+  padding: 25px;
+}
+
+
+.form-new-transaction input, .form-new-transaction select {
+  width: 100%;
 }
