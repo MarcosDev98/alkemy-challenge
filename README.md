@@ -45,10 +45,10 @@ Este challenge consiste en el desarrollo de una aplicación para administración
 
 ## Construido con
 
-* Node ![Node](https://nodejs.org/static/images/logo.svg)
+* JavaScript
+* Node
 * Express
 * React
-* JavaScript
 * CSS
 * HTML5
 
