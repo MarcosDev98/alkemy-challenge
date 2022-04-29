@@ -59,11 +59,11 @@ Este challenge consiste en el desarrollo de una aplicación para administración
 1. Clonar repositorio:  `git clone https://github.com/MarcosDev98/alkemy-challenge.git`.
 2. Crear un archivo `.env` en el directorio /server/ el cual contenga las siguientes variables: 
 
-    PORT=5005
+    `PORT=5005`
 
-    HOST='localhost'
+    `HOST='localhost'`
     
-    USER_DB='', Dentro de las comillas ingrese el usuario de su Base de datos.
+    `USER_DB=''`, Dentro de las comillas ingrese el usuario de su Base de datos.
     
     PASSWORD='', Dentro de las comillas ingrese la contraseña de su Base de datos.
     
