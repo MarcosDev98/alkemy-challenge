@@ -16,7 +16,6 @@ const Login = () => {
     password: '',
   });
 
-  // eslint-disable-next-line no-unused-vars
   const [signUpForm, signUpHandler, resetSignUp] = useForm({
     firstname: '',
     lastname: '',
@@ -64,7 +63,7 @@ const Login = () => {
       
       });
 
-    // resetSignUp();
+    resetSignUp();
 
   };
 

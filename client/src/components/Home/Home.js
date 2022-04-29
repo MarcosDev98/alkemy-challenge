@@ -7,8 +7,6 @@ const Home = () => {
 
   return (
     <Table />
-    // <div className='home-container'>
-    // </div>
   );
 };
 

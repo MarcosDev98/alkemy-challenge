@@ -34,7 +34,6 @@ const Table = () => {
       });
   };
 
-  // REEMPLAZAR CON MI HOOK.
   const handleEditFormChange = (e) => {
     e.preventDefault();
 

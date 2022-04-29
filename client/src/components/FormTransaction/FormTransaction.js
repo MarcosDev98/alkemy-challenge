@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Input, Select, Button } from '../'; 
 import './style.css';
-// HACER QUE SE PUEDA IMPORTAR DESDE 1 SOLO ARCHIVO!!
 import { createTransaction } from '../../services/transaction';
 import { getTypes } from '../../services/types';
 
