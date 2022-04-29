@@ -57,7 +57,7 @@ Este challenge consiste en el desarrollo de una aplicación para administración
 
 
 1. Clonar repositorio:  `git clone https://github.com/MarcosDev98/alkemy-challenge.git`.
-2. Crear un archivo `.env` en el directorio /server/ el cual contenga las siguientes variables: 
+2. Crear un archivo `.env` en el directorio `/server/` el cual contenga las siguientes variables: 
 
     `PORT=5005`
 
@@ -65,16 +65,16 @@ Este challenge consiste en el desarrollo de una aplicación para administración
     
     `USER_DB=''`, Dentro de las comillas ingrese el usuario de su Base de datos.
     
-    PASSWORD='', Dentro de las comillas ingrese la contraseña de su Base de datos.
+    `PASSWORD=''`, Dentro de las comillas ingrese la contraseña de su Base de datos.
     
-    DATABASE='alkemy_fullstack'  
+    `DATABASE='alkemy_fullstack'`  
     
-    SECRET='alkemy'
+    `SECRET='alkemy'`
 
     
 3. Ejecutar el script SQL que se encuentra en alkemy-challenge/server/database/db.sql el cual contiene la estructura de la Base de Datos y algunos datos necesarios para que la aplicación funcione.
-4. Ejecutar el comando `npm install` dentro del directorio /server/ para instalar las dependencias del backend.
-5. Ejecutar el comando `npm run start` dentro del directorio /server/ para iniciar el servidor.
-6. Ejecutar el comando `npm install` dentro del directorio /client/ para instalar las dependencias del frontend.
-7. Ejecutar el comando `npm run start` dentro del directorio /client/ para iniciar la aplicacion
+4. Ejecutar el comando `npm install` dentro del directorio `/server/` para instalar las dependencias del backend.
+5. Ejecutar el comando `npm run start` dentro del directorio `/server/` para iniciar el servidor.
+6. Ejecutar el comando `npm install` dentro del directorio `/client/` para instalar las dependencias del frontend.
+7. Ejecutar el comando `npm run start` dentro del directorio `/client/` para iniciar la aplicacion
 
