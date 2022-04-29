@@ -1,10 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import useForm from '../../hooks/useForm.js';
 import { createUser, loginUser } from '../../services/user.js';
 import { useAuth } from '../../hooks/useAuth.js';
-// eslint-disable-next-line no-unused-vars
-import { Input, Notification } from '../';
+import { Input } from '../';
 
 import './style.css';
 
@@ -25,7 +24,7 @@ const Login = () => {
     username: '',
     password: '',
   });
-
+  const [error, setError] = useState(false);
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -37,7 +36,15 @@ const Login = () => {
         navigate('/');
         
       })
-      .catch((error) => console.error('login_error', error));
+      .catch((error) => {
+        const newError = {
+          title: 'Login error',
+          message: error.error
+        };
+        setError(newError);
+        hideError();
+
+      });
     
     resetLogin();
     
@@ -46,19 +53,16 @@ const Login = () => {
   
   const handleSignUp = (e) => {
     e.preventDefault();
-    console.log('handle_signup:', signUpForm);
     createUser(signUpForm)
       .then((data) => {
         
         if (data.status === 'OK') {
           showLoginForm();
-        } else {
-          <Notification mode='success' title='Ups' message='Error' />;
-        }
-        
-
-      })
-      .catch((error) => console.error('signup_error', error));
+        }})
+      .catch((error) => {
+        console.log(error);
+      
+      });
 
     // resetSignUp();
 
@@ -135,7 +139,13 @@ const Login = () => {
 
   };
 
+  const hideError = () => {
+    setTimeout(() => {
+      setError(false);
+    }, 5000);
+  };
 
+  
 
   return (
     <div className='body'>
@@ -152,10 +162,11 @@ const Login = () => {
                   <Input id='pwField1' label='Contraseña' type='password' name='password' value={loginForm.password} onChange={loginHandler} className='password input' />
                   <i onClick={showHidePassword} name='showHidePw' className="uil uil-eye-slash right-icon"></i>
                 </div>
+                {error ? <div className='error-message'>{error.message}</div> : null}
                 <button className='block-button'>Ingresar</button>
                 <div className='login-signup'>
                   <span>No estas registrado?</span>
-                  <a onClick={showRegistrationForm} href='#'>Registrarse</a>
+                  <a className='a' onClick={showRegistrationForm} href='#'>Registrarse</a>
                 </div>
               </form>
             </div>

@@ -101,6 +101,12 @@ a:hover {
   text-align: center;
 }
 
+.error-message {
+  font-size: 14px;
+  color: red;
+  padding: 10px;
+  
+}
 
 @media (max-width: 500px) {
 
