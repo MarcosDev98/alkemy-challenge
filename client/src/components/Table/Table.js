@@ -136,7 +136,7 @@ const Table = () => {
 
 
           <tbody>
-            {transactions.map((x) => {
+            {transactions.slice(-10).map((x) => {
               return editRow === x.id ? (
                 <EditableRow
                   key={x.id}
@@ -153,8 +153,6 @@ const Table = () => {
                   handleDelete={handleDelete}
                 />
               );
-                
-              
             })}
           </tbody>
 

@@ -10,7 +10,7 @@ const Navbar = () => {
   return (
     <nav>
       <Link className='link' to='/'>Home</Link>
-      {!isAuthenticated ? <Link to='login'>Login</Link> : null}
+      {!isAuthenticated ? <Link className='link' to='login'>Login</Link> : null}
       <Link className='link' to='login' onClick={logout}>Logout</Link>
     </nav>
   );
