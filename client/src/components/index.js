@@ -5,7 +5,6 @@ export { default as Home } from './Home';
 export { default as Input } from './Input';
 export { default as Login } from './Login';
 export { default as Navbar } from './Navbar';
-export { default as Notification } from './Notification';
 export { default as ProtectedRoute } from './ProtectedRoute';
 export { default as ReadOnlyRow } from './ReadOnlyRow';
 export { default as Select } from './Select';
