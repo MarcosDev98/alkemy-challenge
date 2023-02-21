@@ -1,8 +1,44 @@
+:root {
+  /* colors */
+  --body-bg: #eee;
+  --main-blue: #0099FF;
+  --button-hover: #2150d0;
+  --container-bg: #fff;
+  --card-bg: #fff;
+  --input-border: rgba(34, 34, 34, 0.15);
+  --input-outline: rgba(0, 132, 255 , 0.733);
+  --input-label: #222;
+  --list-balance: #64b6f5;
+  --nav-bg: #aaa;
+  --select-bg: #fff;
+  --select-border: rgb(34, 34, 34, 0.15);
+  --select-outline: rgba(0, 132, 255, 0.733);
+  --table-expenses: #F58282;
+  --table-incomes: #7CF062;
+  --table-header: #666;
+  --login-a: #0099ff;
+  --login-bg: #0099ff;
+  --login-input-border: #0099ff;
+  --login-icon: #999;
+
+  /* sizes */
+  --size-button: 12px;
+  --size-input: 14px;
+  --size-list-items: 14px;
+  --size-container: 14px;
+  --size-login-title: 27px;
+  --size-login-icon: 23px;
+  --size-login-block-button: 17px;
+  --size-select: 14px;
+}
+
+
+
 body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: 'Poppins', Lato, sans-serif;
   overflow-x: hidden;
-  background-color: #BBEEFF;
+  background-color: var(--body-bg);
 }

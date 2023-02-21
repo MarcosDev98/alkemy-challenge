@@ -1,17 +1,19 @@
 import React from 'react';
-import { Field, Label, StyledSelect } from './styles';
+
+import './style.css';
 
 const Select = ({ label, types, ...props }) => {
 
   return (
-    <Field className='field'>
-      <Label>{label}</Label>  
-      <StyledSelect {...props}>
+    <div className='field'>
+      <label>{label}</label>  
+      <select {...props}>
         {
           types.map(x => 
-            <option key={x.id} value={x.id} >{x.type}</option>)}
-      </StyledSelect>
-    </Field>
+            <option key={x.id} value={x.id} >{x.type}</option>)
+        }
+      </select>
+    </div>
   );
 };
 

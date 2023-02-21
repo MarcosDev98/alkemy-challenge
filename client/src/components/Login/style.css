@@ -1,0 +1,145 @@
+.body {
+  display: flex;
+  align-items: center;
+  background-color: var(--login-bg);
+  height: 100vh;
+  justify-content: center;
+}
+
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+  max-width: 430px;
+  position: relative;
+  width: 100%;
+}
+
+.form {
+  padding: 30px;
+}
+
+.title {
+  font-size: var(--size-login-title);
+  font-weight: 600;
+  position: relative;
+}
+
+.title::before {
+  background-color: var(--login-bg);
+  border-radius: 25px;
+  bottom: 0;
+  content: '';
+  height: 3px;
+  left: 0;
+  position: absolute;
+  width: 30px;
+}
+
+.form-container {
+  padding: 30px;
+}
+
+.input-field {
+  height: 50px;
+  margin-bottom: 30px;
+  margin-top: 30px;
+  position: relative;
+  width: 100%;
+}
+
+.input {
+  border: none;
+  border-bottom: 3px solid #ccc;
+  border-top: 3px solid transparent;
+  height: 100%;
+  outline: none;
+  padding: 0 35px;
+  position: absolute;
+  width: 100%;
+  transition: all 0.2s ease;
+}
+
+input:focus {
+  border-bottom: 3px solid var(--login-input-border);
+}
+
+.right-icon {
+  color: var(--login-icon);
+  font-size: var(--size-login-icon);
+  right: 0;
+  position: absolute;
+  top: 100%;
+  transform: translateY(-50%);
+  transition: all 0.2s ease;
+  cursor: pointer;
+  padding: 10px;
+}
+
+a {
+  cursor: pointer;
+  text-decoration: none;
+  color: var(--login-a);
+  margin-left: 5px;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+.block-button {
+  margin: 30px 0 30px 0;
+  border-radius: 6px;
+  font-size: var(--size-login-block-button);
+  letter-spacing: 1px;
+  width: 100%;
+  transition: all 0.3s ease;
+}
+
+.login-signup {
+  text-align: center;
+}
+
+.error-message {
+  font-size: 14px;
+  color: red;
+  padding: 10px;
+  
+}
+
+@media (max-width: 500px) {
+
+
+  .container {
+    margin-left: auto;
+    margin-right: auto;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+    max-width: 430px;
+    position: relative;
+    width: 75%;
+  }
+
+  .form {
+    padding: 10px;
+  }
+
+  .input {
+    border: none;
+    border-bottom: 3px solid #ccc;
+    border-top: 3px solid transparent;
+    height: 100%;
+    outline: none;
+    padding: 0 35px;
+    position: absolute;
+    width: 100%;
+    transition: all 0.2s ease;
+  }
+
+  .form-container {
+    padding: 10px;
+  }
+
+}

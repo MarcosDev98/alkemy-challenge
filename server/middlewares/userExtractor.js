@@ -10,7 +10,6 @@ module.exports = (request, response, next) => {
     token = authorization.substring(7);
   }
 
-  //se supone que es secreta, deberia estar en un .env o algo asi.
   const decodedToken = jwt.verify(token, 'alkemy');
   if (!token || !decodedToken.id) {
     return response.status(401).json({

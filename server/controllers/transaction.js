@@ -3,7 +3,6 @@ const mysqlConnection = require('../connection.js');
 const { is_deleted, is_not_deleted } = require('../utils/globals.js');
 const userExtractor = require('../middlewares/userExtractor');
 
-// deberia tener las consultas en otro lado e importarlas??
 
 transactionRouter.get('/', userExtractor, async (req, res) => {
 
@@ -41,11 +40,11 @@ transactionRouter.post('/create', userExtractor, async (req, res) => {
 
 transactionRouter.put('/update', userExtractor, async (req, res) => {
 
-  const { id, concept, amount, date, category_id } = req.body;
+  const { id, concept, amount, date } = req.body;
 
   const { user_id } = req;
 
-  await mysqlConnection.query(`UPDATE transaction SET concept='${concept}', amount=${amount}, date='${date}', category_id=${category_id} WHERE id=${id} AND user_id=${user_id};`, (err) => {
+  await mysqlConnection.query(`UPDATE transaction SET concept='${concept}', amount=${amount}, date='${date}' WHERE id=${id} AND user_id=${user_id};`, (err) => {
     if (err) {
       const error = { code: err.code, message: err.message };
       throw error;

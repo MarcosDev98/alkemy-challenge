@@ -1,15 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Nav } from './styles';
-
+import { useAuth } from '../../hooks/useAuth';
+import './style.css';
 
 const Navbar = () => {
 
+  const { logout, isAuthenticated } = useAuth();
+
   return (
-    <Nav>
-      <Link to='/'>Home</Link>
-      <Link to='login'>Login</Link>
-    </Nav>
+    <nav>
+      <Link className='link' to='/'>Home</Link>
+      {!isAuthenticated ? <Link className='link' to='login'>Login</Link> : null}
+      <Link className='link' to='login' onClick={logout}>Logout</Link>
+    </nav>
   );
 
 };

@@ -1,37 +1,49 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import useForm from '../../hooks/useForm.js';
 import { createUser, loginUser } from '../../services/user.js';
-import { A, Body, Container, LoginSignup, BlockButton, Form, Forms, FormContainer, InputField, Title, StyledInput, RightIcon, Span } from './styles.js';
+import { useAuth } from '../../hooks/useAuth.js';
+import { Input } from '../';
 
-
+import './style.css';
 
 const Login = () => {
 
+  const { login } = useAuth();
   const navigate = useNavigate();
   const [loginForm, loginHandler, resetLogin] = useForm({
     username: '',
     password: '',
   });
 
-  // eslint-disable-next-line no-unused-vars
   const [signUpForm, signUpHandler, resetSignUp] = useForm({
     firstname: '',
     lastname: '',
     email: '',
     username: '',
     password: '',
-  })
-;
+  });
+  const [error, setError] = useState(false);
+
   const handleLogin = async (e) => {
     e.preventDefault();
 
     loginUser(loginForm)
       .then((data) => {
-        window.localStorage.setItem('loggedUser', JSON.stringify(data));
+        
+        login(data);
         navigate('/');
+        
       })
-      .catch((error) => console.error('login_error', error));
+      .catch((error) => {
+        const newError = {
+          title: 'Login error',
+          message: error.error
+        };
+        setError(newError);
+        hideError();
+
+      });
     
     resetLogin();
     
@@ -40,19 +52,18 @@ const Login = () => {
   
   const handleSignUp = (e) => {
     e.preventDefault();
-    console.log('handle_signup:', signUpForm);
     createUser(signUpForm)
       .then((data) => {
         
         if (data.status === 'OK') {
           showLoginForm();
-        }
-        
+        }})
+      .catch((error) => {
+        console.log(error);
+      
+      });
 
-      })
-      .catch((error) => console.error('signup_error', error));
-
-    // resetSignUp();
+    resetSignUp();
 
   };
 
@@ -127,57 +138,64 @@ const Login = () => {
 
   };
 
+  const hideError = () => {
+    setTimeout(() => {
+      setError(false);
+    }, 5000);
+  };
 
+  
 
   return (
-    <Body>
-      <Container id='container' >
-        <Forms>
-          <FormContainer>
+    <div className='body'>
+      <div className='container' id='container' >
+        <div className='forms'>
+          <div className='form-container'>
             <div id='login-form'>
-              <Form onSubmit={handleLogin}>
-                <Title>Login</Title>
-                <InputField>
-                  <StyledInput label='Usuario' name='username' value={loginForm.username} onChange={loginHandler} />
-                </InputField>
-                <InputField>
-                  <StyledInput id='pwField1' label='Contraseña' type='password' name='password' value={loginForm.password} onChange={loginHandler} className='password' />
-                  <RightIcon onClick={showHidePassword} name='showHidePw' className="uil uil-eye-slash"></RightIcon>
-                </InputField>
-                <BlockButton>Ingresar</BlockButton>
-                <LoginSignup>
-                  <Span>No estas registrado?</Span>
-                  <A onClick={showRegistrationForm} href='#'>Registrarse</A>
-                </LoginSignup>
-              </Form>
+              <form className='form' onSubmit={handleLogin}>
+                <span className='title'>Login</span>
+                <div className='input-field'>
+                  <Input className='input' label='Usuario' name='username' value={loginForm.username} onChange={loginHandler} />
+                </div>
+                <div className='input-field'>
+                  <Input id='pwField1' label='Contraseña' type='password' name='password' value={loginForm.password} onChange={loginHandler} className='password input' />
+                  <i onClick={showHidePassword} name='showHidePw' className="uil uil-eye-slash right-icon"></i>
+                </div>
+                {error ? <div className='error-message'>{error.message}</div> : null}
+                <button className='block-button'>Ingresar</button>
+                <div className='login-signup'>
+                  <span>No estas registrado?</span>
+                  <a className='a' onClick={showRegistrationForm} href='#'>Registrarse</a>
+                </div>
+              </form>
             </div>
 
             <div id='registration-form' style={{display: 'none'}}>
-              <Form onSubmit={handleSignUp}>
-                <Title>Registro</Title>
-                <InputField>
-                  <StyledInput label='Nombre' name='firstname' value={signUpForm.firstname} onChange={signUpHandler} />
-                </InputField>
-                <InputField>
-                  <StyledInput label='Apellido' name='lastname' value={signUpForm.lastname} onChange={signUpHandler} />
-                </InputField>
-                <InputField>
-                  <StyledInput label='Email' name='email' value={signUpForm.email} onChange={signUpHandler} />
-                </InputField>
-                <InputField>
-                  <StyledInput label='Usuario' name='username' value={signUpForm.username} onChange={signUpHandler} />
-                </InputField>
-                <InputField>
-                  <StyledInput id='pwField2' label='Contraseña' name='password' value={signUpForm.password} onChange={signUpHandler} type='password' className='password' />
-                  <RightIcon onClick={showHidePassword} name='showHidePw' className="uil uil-eye-slash "></RightIcon>
-                </InputField>
-                <BlockButton>Registrar</BlockButton>
-              </Form>
+              <form onSubmit={handleSignUp}>
+                <span className='title'>Registro</span>
+                <div className='input-field'>
+                  <Input label='Nombre' name='firstname' value={signUpForm.firstname} onChange={signUpHandler} className='input' />
+                </div>
+                <div className='input-field'>
+                  <Input label='Apellido' name='lastname' value={signUpForm.lastname} onChange={signUpHandler} className='input' />
+                </div>
+                <div className='input-field'>
+                  <Input label='Email' name='email' value={signUpForm.email} onChange={signUpHandler} className='input' />
+                </div>
+                <div className='input-field'>
+                  <Input label='Usuario' name='username' value={signUpForm.username} onChange={signUpHandler} className='input' />
+                </div>
+                <div className='input-field'>
+                  <Input label='Contraseña' name='password' value={signUpForm.password} onChange={signUpHandler} type='password' className='password input' />
+                  <i onClick={showHidePassword} name='showHidePw' className="uil uil-eye-slash right-icon" />
+                </div>
+                <button className='block-button'>Registrar</button>
+              </form>
             </div>
-          </FormContainer>
-        </Forms>
-      </Container>
-    </Body>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 };
 

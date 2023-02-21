@@ -8,6 +8,7 @@ require('dotenv').config();
 
 loginRouter.use(express.json());
 
+const secret = process.env.SECRET;
 
 loginRouter.post('/', async (req, res) => {
   
@@ -45,7 +46,7 @@ loginRouter.post('/', async (req, res) => {
     username: user[0].username
   };
 
-  const token = jwt.sign(userForToken, 'alkemy', {
+  const token = jwt.sign(userForToken, secret, {
     expiresIn: 60 * 60 * 24
   });
 

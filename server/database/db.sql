@@ -34,3 +34,6 @@ CREATE TABLE type_transaction(
   type VARCHAR(20) NOT NULL,
   is_deleted VARCHAR(1) NOT NULL,
 );
+
+INSERT INTO type_transaction VALUES(1, 'ingreso', 'N');
+INSERT INTO type_transaction VALUES(2, 'egreso', 'N');

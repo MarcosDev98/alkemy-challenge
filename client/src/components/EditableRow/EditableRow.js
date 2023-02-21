@@ -1,17 +1,19 @@
 import React from 'react';
-
-import { TR, TD } from '../Table/styles';
+import { Input, Button } from '../';
+import '../Table/style.css';
 
 const EditableRow = ({ transaction, editFormData, handleEditFormChange, handleCancelClick }) => {
 
 
   return (
-    <TR 
+    <tr 
       key={transaction.id} 
       bg={transaction.id_type_transaction === 1 ? 'green' : 'red' }
     >
-      <TD>
-        <input 
+      <td
+        name={'Concepto'}
+      >
+        <Input 
           type='text' 
           required 
           placeholder='Ingrese el concepto...' 
@@ -19,9 +21,11 @@ const EditableRow = ({ transaction, editFormData, handleEditFormChange, handleCa
           onChange={handleEditFormChange}
           value={editFormData.concept}
         />
-      </TD>
-      <TD>
-        <input 
+      </td>
+      <td
+        name={'Monto'}
+      >
+        <Input 
           type='text' 
           required 
           placeholder='Ingrese el Monto...' 
@@ -29,9 +33,11 @@ const EditableRow = ({ transaction, editFormData, handleEditFormChange, handleCa
           onChange={handleEditFormChange}
           value={editFormData.amount}
         />
-      </TD>
-      <TD>
-        <input 
+      </td>
+      <td
+        name={'Fecha'}
+      >
+        <Input 
           type='text' 
           required 
           placeholder='Ingrese la fecha...' 
@@ -39,20 +45,15 @@ const EditableRow = ({ transaction, editFormData, handleEditFormChange, handleCa
           onChange={handleEditFormChange}
           value={editFormData.date}
         />
-      </TD>
-      <TD>
-        <input 
-          type='text' 
-          required 
-          placeholder='Ingrese la categoria...' 
-          name='category_id'
-          onChange={handleEditFormChange}
-          value={editFormData.category_id}
-        />
-      </TD>
-      <button type='submit' >Save</button>
-      <button type='button' onClick={handleCancelClick} >Cancel</button>
-    </TR>
+      </td>
+      <td
+        name={'Acciones'}
+      >
+        <Button type='submit' >Save</Button>
+        <Button type='button' onClick={handleCancelClick} >Cancel</Button>
+      </td>
+      
+    </tr>
   );
 };
 

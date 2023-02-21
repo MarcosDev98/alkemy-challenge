@@ -1,0 +1,23 @@
+
+.field {
+  font-size: var(--size-select);
+  margin-bottom: 1em;
+}
+
+label {
+  display: block;
+  margin: 0 0 5px 0;
+  color: #222;
+  font-weight: 700;
+}
+
+select {
+  background-color: var(--select-bg);
+  padding: 10px 15px;
+  border: 1px solid var(--select-border);
+  outline: 1px solid unset;
+  outline-color: var(--select-outline);
+  border-radius: 4px;
+  width: 75%;
+  box-sizing: border-box;
+}

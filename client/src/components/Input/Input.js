@@ -1,13 +1,13 @@
 import React from 'react';
-import { StyledInput, Label, Field } from './styles.js';
+import './style.css';
 
 const Input = ({ label, ...props }) => {
 
   return (
-    <Field>
-      <Label>{label}</Label>
-      <StyledInput {...props} />
-    </Field>
+    <div className='field'>
+      <label>{label}</label>
+      <input autoComplete='off' {...props} />
+    </div>
   );
 };
 

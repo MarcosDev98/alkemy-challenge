@@ -1,32 +1,25 @@
 import React from 'react';
-
-// eslint-disable-next-line no-unused-vars
-import { TR, TD } from '../Table/styles';
-
-import { EditIcon, DeleteIcon, IconsTD, CategoryTD, ConceptTD, AmountTD, DateTD } from './styles';
-
-
+import '../Table/style.css';
 
 const ReadOnlyRow = ({ transaction, handleEdit, handleDelete }) => {
   return (
-    <TR 
+    <tr 
       key={transaction.id} 
-      bg={transaction.id_type_transaction === 1 ? 'green' : 'red' }
+      className={`${transaction.id_type_transaction === 1 ? 'green' : 'red'}`}
     >
-      <ConceptTD>{transaction.concept}</ConceptTD>
-      <AmountTD>{transaction.amount}</AmountTD>
-      <DateTD>{transaction.date}</DateTD>
-      <CategoryTD>{transaction.category_id}</CategoryTD>
-      <IconsTD>
-        <EditIcon 
-          className="uil uil-edit" 
+      <td name='Concepto'>{transaction.concept}</td>
+      <td name='Monto'>{transaction.amount}</td>
+      <td name='Fecha'>{transaction.date}</td>
+      <td name='Acciones'>
+        <i 
+          className="uil uil-pen pen" 
           onClick={(event) => handleEdit(event, transaction)} 
         />
-        <DeleteIcon 
-          className="uil uil-trash-alt" 
+        <i 
+          className="uil uil-trash trash" 
           onClick={(event) => handleDelete(event, transaction)} />
-      </IconsTD>
-    </TR>
+      </td>
+    </tr>
   );
 };
 

@@ -1,16 +1,13 @@
 import React, { useState, useEffect } from 'react';
 // eslint-disable-next-line no-unused-vars
 import { ReadOnlyRow, EditableRow, FormTransaction } from '../';
-import { ConceptTH, TableContainer, StyledTable, TableBody, TableHead, TR, TH } from './styles';
-import { numberFormatter } from '../../utils/numberFormat';
+import './style.css';
 import { updateTransaction, deleteTransaction, getTransactions } from '../../services/transaction';
-import useUser from '../../hooks/useUser';
-
+import { useAuth } from '../../hooks/useAuth';
 
 const Table = () => {
 
   const [transactions, setTransactions] = useState([]);
-  const { user } = useUser();
   const [editRow, setEditRow] = useState(null);
   const [editFormData, setEditFormData] = useState({
     id: '',
@@ -19,8 +16,7 @@ const Table = () => {
     date: '',
     category_id: ''
   });
-
-  console.log('user: ', user);
+  const { user } = useAuth();
 
   useEffect(() => {
     if (user) {
@@ -38,7 +34,6 @@ const Table = () => {
       });
   };
 
-  // REEMPLAZAR CON MI HOOK.
   const handleEditFormChange = (e) => {
     e.preventDefault();
 
@@ -123,54 +118,45 @@ const Table = () => {
 
   return(
     <>
-      <TableContainer>
-        <h1>Balance actual: {
-          transactions.reduce((total, x) => 
-          {
-            return numberFormatter(x.id_type_transaction === 1 ? total += x.amount : total -= x.amount);
-          }, 0)}
-        </h1>
-        <form onSubmit={handleEditFormSubmit}>
-          <StyledTable>
+      <div className='balance'>
+        <h1>Balance actual: { transactions.reduce((total, x) => x.id_type_transaction === 1 ? total += x.amount : total -= x.amount, 0) } </h1>
+      </div>
+      <form onSubmit={handleEditFormSubmit}>
+        <table className='table'>
 
-            <TableHead>
-              <TR>
-                <ConceptTH >Concepto</ConceptTH>
-                <TH >Monto</TH>
-                <TH >Fecha</TH>
-                <TH >Categoria</TH>
-                <TH >Acciones</TH>
-              </TR>
-            </TableHead>
+          <thead>
+            <tr>
+              <th>Concepto</th>
+              <th >Monto</th>
+              <th >Fecha</th>
+              <th >Acciones</th>
+            </tr>
+          </thead>
 
 
+          <tbody>
+            {transactions.slice(-10).map((x) => {
+              return editRow === x.id ? (
+                <EditableRow
+                  key={x.id}
+                  editFormData={editFormData}
+                  handleEditFormChange={handleEditFormChange}
+                  transaction={x}
+                  handleCancelClick={handleCancelClick}
+                />
+              ) : (
+                <ReadOnlyRow 
+                  key={x.id} 
+                  transaction={x} 
+                  handleEdit={handleEdit} 
+                  handleDelete={handleDelete}
+                />
+              );
+            })}
+          </tbody>
 
-            <TableBody>
-              {transactions.map((x) => {
-                return editRow === x.id ? (
-                  <EditableRow
-                    key={x.id}
-                    editFormData={editFormData}
-                    handleEditFormChange={handleEditFormChange}
-                    transaction={x}
-                    handleCancelClick={handleCancelClick}
-                  />
-                ) : (
-                  <ReadOnlyRow 
-                    key={x.id} 
-                    transaction={x} 
-                    handleEdit={handleEdit} 
-                    handleDelete={handleDelete}
-                  />
-                );
-                
-              
-              })}
-            </TableBody>
-
-          </StyledTable>
-        </form>
-      </TableContainer>
+        </table>
+      </form>
       <FormTransaction getTransactions={getAllTransactions} />
     </>
   );
